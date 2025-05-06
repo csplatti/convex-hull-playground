@@ -1,15 +1,13 @@
 import './App.css';
 import FullScreenPanel from './FullScreenPanel/FullScreenPanel';
+import { useEffect } from 'react';
 
 function App() {
-  return (
-    <html>
-        <title>Convex Hull Playground</title>
-        <body>
-            <FullScreenPanel />
-        </body>
-    </html>
-  );
+    useEffect(() => {
+        document.title = "Convex Hull Demo";
+    }, []);
+
+  return <FullScreenPanel />;
 }
 
 export default App;
