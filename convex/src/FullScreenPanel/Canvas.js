@@ -4,24 +4,24 @@ import * as d3 from "d3";
 
 function Canvas() {
     const [points, setPoints] = useState([]);
+    const [hullPoints, setHullPoints] = useState([]);
     const svgRef = useRef();
     const POINT_COLOR = "#FE7743";
     const POINT_RADIUS = 5;
-
-    const hullPoints = [
-        [100, 100],
-        [150, 25],
-        [200, 100],
-        [150, 175]
-    ];
 
     function handleCanvasClick(e) {
         const rect = e.target.getBoundingClientRect();
         console.log(e.clientX - rect.left, e.clientY - rect.top);
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        setPoints(prev => [...prev, [x, y]]);
-        console.log(points);
+        let newPoints = [...points, [x, y]]
+        setPoints(newPoints);
+        updateHullPoints(newPoints);
+        // TODO: Fix bug where clicking on hull point/polygon adds new point in strange location
+    }
+
+    function updateHullPoints(newPoints) {
+        setHullPoints(newPoints);
     }
 
     useEffect(() => {
@@ -43,6 +43,13 @@ function Canvas() {
         .attr("fill", "rgba(0, 150, 255, 0.3)")
         .attr("stroke", "blue")
         .attr("stroke-width", 2);
+
+        // setHullPoints([
+        //     [100, 100],
+        //     [150, 25],
+        //     [200, 100],
+        //     [150, 175]
+        // ]);
 
     }, [points, hullPoints]);
 
