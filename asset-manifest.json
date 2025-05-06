@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.css": "/your-repo-name/static/css/main.a3cb51fa.css",
-    "main.js": "/your-repo-name/static/js/main.c05019ac.js",
-    "index.html": "/your-repo-name/index.html",
-    "main.a3cb51fa.css.map": "/your-repo-name/static/css/main.a3cb51fa.css.map",
-    "main.c05019ac.js.map": "/your-repo-name/static/js/main.c05019ac.js.map"
+    "main.css": "/convex-hull-playground/static/css/main.a3cb51fa.css",
+    "main.js": "/convex-hull-playground/static/js/main.c05019ac.js",
+    "index.html": "/convex-hull-playground/index.html",
+    "main.a3cb51fa.css.map": "/convex-hull-playground/static/css/main.a3cb51fa.css.map",
+    "main.c05019ac.js.map": "/convex-hull-playground/static/js/main.c05019ac.js.map"
   },
   "entrypoints": [
     "static/css/main.a3cb51fa.css",
