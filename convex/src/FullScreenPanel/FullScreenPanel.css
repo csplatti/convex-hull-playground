@@ -1,0 +1,42 @@
+.FullScreenPanel {
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    grid-template-rows: 100%;
+    grid-template-areas: "SidePanel Canvas";
+    position: absolute;
+}
+
+.SidePanel {
+    color: #EFEEEA;
+    height:100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: #273F4F;
+    grid-area: SidePanel;
+}
+
+.SidePanelTitle {
+    color: #EFEEEA;
+    font-size: 1.5em;
+    text-align: center;
+    padding: 10px;
+}
+
+.SidePanelText {
+    color: #EFEEEA;
+    font-size: 1em;
+    text-align: center;
+    padding: 10px;
+}
+
+.Canvas {
+    width: 100%;
+    height: 100%;
+    grid-area: Canvas;
+    background-color: #EFEEEA
+}
