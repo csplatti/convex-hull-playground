@@ -2,7 +2,14 @@ import './App.css';
 import FullScreenPanel from './FullScreenPanel/FullScreenPanel';
 
 function App() {
-  return <FullScreenPanel />;
+  return (
+    <html>
+        <title>Convex Hull Playground</title>
+        <body>
+            <FullScreenPanel />
+        </body>
+    </html>
+  );
 }
 
 export default App;
