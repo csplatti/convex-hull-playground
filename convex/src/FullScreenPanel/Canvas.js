@@ -10,7 +10,8 @@ function Canvas() {
     const POINT_RADIUS = 5;
 
     function handleCanvasClick(e) {
-        const rect = e.target.getBoundingClientRect();
+        const svg = svgRef.current;
+        const rect = svg.getBoundingClientRect();
         console.log(e.clientX - rect.left, e.clientY - rect.top);
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
