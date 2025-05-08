@@ -19,7 +19,6 @@ function Canvas() {
         let newPoints = [...points, [x, y]]
         setPoints(newPoints);
         updateHullPoints(newPoints);
-        // TODO: Fix bug where clicking on hull point/polygon adds new point in strange location
     }
 
     function updateHullPoints(newPoints) {
