@@ -232,6 +232,10 @@ function removeFromArray(item, arr) {
 //     return [lHullPtrDump, rHullPtrDump];
 // }
 
+function sum(a, b) {
+    return a + b;
+}
+
 function combineHulls(hull1, hull2) {
     // let xAvg = getAverageXCoord([...hull1, ...hull2]);
 
@@ -268,4 +272,4 @@ function divideConquerConvexHull(points) {
     }
 }
 
-export default divideConquerConvexHull;
+export { sum, divideConquerConvexHull };
