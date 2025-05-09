@@ -123,134 +123,134 @@ function removeFromArray(item, arr) {
     }
 }
 
-function getUpperTangent(leftHull, rightHull, xAvg) {
-    let lHullPtr = getLeftMostPointIndex(rightHull);
-    let rHullPtr = getRightMostPointIndex(leftHull);
+// function getUpperTangent(leftHull, rightHull, xAvg) {
+//     let lHullPtr = getLeftMostPointIndex(rightHull);
+//     let rHullPtr = getRightMostPointIndex(leftHull);
 
-    console.log("left hull ptr", lHullPtr);
+//     console.log("left hull ptr", lHullPtr);
 
-    let lHullPtrDump = [];
-    let rHullPtrDump = [];
+//     let lHullPtrDump = [];
+//     let rHullPtrDump = [];
 
-    let lastAMoveDecrease = false;
-    let lastBMoveDecrease = false;
+//     let lastAMoveDecrease = false;
+//     let lastBMoveDecrease = false;
 
-    let currentYij = calculatePointOnLineThroughPts(leftHull[lHullPtr], rightHull[rHullPtr], xAvg);
+//     let currentYij = calculatePointOnLineThroughPts(leftHull[lHullPtr], rightHull[rHullPtr], xAvg);
 
-    while (!lastAMoveDecrease && !lastBMoveDecrease) {
-        let tempRHullPtr = (rHullPtr + 1) % rightHull.length;
-        let newYijB = calculatePointOnLineThroughPts(leftHull[lHullPtr], rightHull[tempRHullPtr], xAvg);
-        if (newYijB > currentYij) {
-            rHullPtr = tempRHullPtr;
-            currentYij = newYijB;
-            lastBMoveDecrease = false;
+//     while (!lastAMoveDecrease && !lastBMoveDecrease) {
+//         let tempRHullPtr = (rHullPtr + 1) % rightHull.length;
+//         let newYijB = calculatePointOnLineThroughPts(leftHull[lHullPtr], rightHull[tempRHullPtr], xAvg);
+//         if (newYijB > currentYij) {
+//             rHullPtr = tempRHullPtr;
+//             currentYij = newYijB;
+//             lastBMoveDecrease = false;
 
-            if (rHullPtrDump.includes(tempRHullPtr)) {
-                removeFromArray(tempRHullPtr, rHullPtrDump);
-            }
-        } else if (newYijB === currentYij) {
-            alert("You have found a case where this algorithm does not work!");
-        } else {
-            if (!rHullPtrDump.includes(tempRHullPtr)) {
-                rHullPtrDump.push(tempRHullPtr);
-            }
-            lastBMoveDecrease = true;
-        }
+//             if (rHullPtrDump.includes(tempRHullPtr)) {
+//                 removeFromArray(tempRHullPtr, rHullPtrDump);
+//             }
+//         } else if (newYijB === currentYij) {
+//             alert("You have found a case where this algorithm does not work!");
+//         } else {
+//             if (!rHullPtrDump.includes(tempRHullPtr)) {
+//                 rHullPtrDump.push(tempRHullPtr);
+//             }
+//             lastBMoveDecrease = true;
+//         }
 
-        let tempLHullPtr = (lHullPtr - 1) % lHullPtr.length;
-        console.log(tempLHullPtr, leftHull[tempLHullPtr]);
-        let newYijA = calculatePointOnLineThroughPts(leftHull[tempLHullPtr], rightHull[tempRHullPtr]);
-        if (newYijA > currentYij) {
-            lHullPtr = tempLHullPtr;
-            currentYij = newYijA;
-            lastAMoveDecrease = false;
-            if (lHullPtrDump.includes(tempLHullPtr)) {
-                removeFromArray(tempLHullPtr, lHullPtrDump);
-            }
-        } else if (newYijA === currentYij) {
-            alert("You have found a case where this algorithm does not work!");
-        } else {
-            lastAMoveDecrease = true;
-            if (!lHullPtrDump.includes(tempLHullPtr)) {
-                lHullPtrDump.push(tempLHullPtr);
-            }
-        }
-    }
+//         let tempLHullPtr = (lHullPtr - 1) % lHullPtr.length;
+//         console.log(tempLHullPtr, leftHull[tempLHullPtr]);
+//         let newYijA = calculatePointOnLineThroughPts(leftHull[tempLHullPtr], rightHull[tempRHullPtr]);
+//         if (newYijA > currentYij) {
+//             lHullPtr = tempLHullPtr;
+//             currentYij = newYijA;
+//             lastAMoveDecrease = false;
+//             if (lHullPtrDump.includes(tempLHullPtr)) {
+//                 removeFromArray(tempLHullPtr, lHullPtrDump);
+//             }
+//         } else if (newYijA === currentYij) {
+//             alert("You have found a case where this algorithm does not work!");
+//         } else {
+//             lastAMoveDecrease = true;
+//             if (!lHullPtrDump.includes(tempLHullPtr)) {
+//                 lHullPtrDump.push(tempLHullPtr);
+//             }
+//         }
+//     }
 
-    return [lHullPtrDump, rHullPtrDump];
-}
+//     return [lHullPtrDump, rHullPtrDump];
+// }
 
-function getLowerTangent(leftHull, rightHull, xAvg) {
-    let lHullPtr = getLeftMostPointIndex(rightHull);
-    let rHullPtr = getRightMostPointIndex(leftHull);
+// function getLowerTangent(leftHull, rightHull, xAvg) {
+//     let lHullPtr = getLeftMostPointIndex(rightHull);
+//     let rHullPtr = getRightMostPointIndex(leftHull);
 
-    let lHullPtrDump = [];
-    let rHullPtrDump = [];
+//     let lHullPtrDump = [];
+//     let rHullPtrDump = [];
 
-    let lastAMoveDecrease = false;
-    let lastBMoveDecrease = false;
+//     let lastAMoveDecrease = false;
+//     let lastBMoveDecrease = false;
 
-    let currentYij = calculatePointOnLineThroughPts(leftHull[lHullPtr], rightHull[rHullPtr], xAvg);
+//     let currentYij = calculatePointOnLineThroughPts(leftHull[lHullPtr], rightHull[rHullPtr], xAvg);
 
-    while (!lastAMoveDecrease && !lastBMoveDecrease) {
-        let tempRHullPtr = (rHullPtr - 1) % rightHull.length;
-        let newYijB = calculatePointOnLineThroughPts(leftHull[lHullPtr], rightHull[tempRHullPtr], xAvg);
-        if (newYijB < currentYij) {
-            rHullPtr = tempRHullPtr;
-            currentYij = newYijB;
-            lastBMoveDecrease = false;
+//     while (!lastAMoveDecrease && !lastBMoveDecrease) {
+//         let tempRHullPtr = (rHullPtr - 1) % rightHull.length;
+//         let newYijB = calculatePointOnLineThroughPts(leftHull[lHullPtr], rightHull[tempRHullPtr], xAvg);
+//         if (newYijB < currentYij) {
+//             rHullPtr = tempRHullPtr;
+//             currentYij = newYijB;
+//             lastBMoveDecrease = false;
 
-            if (rHullPtrDump.includes(tempRHullPtr)) {
-                removeFromArray(tempRHullPtr, rHullPtrDump);
-            }
-        } else if (newYijB === currentYij) {
-            alert("You have found a case where this algorithm does not work!");
-        } else {
-            if (!rHullPtrDump.includes(tempRHullPtr)) {
-                rHullPtrDump.push(tempRHullPtr);
-            }
-            lastBMoveDecrease = true;
-        }
+//             if (rHullPtrDump.includes(tempRHullPtr)) {
+//                 removeFromArray(tempRHullPtr, rHullPtrDump);
+//             }
+//         } else if (newYijB === currentYij) {
+//             alert("You have found a case where this algorithm does not work!");
+//         } else {
+//             if (!rHullPtrDump.includes(tempRHullPtr)) {
+//                 rHullPtrDump.push(tempRHullPtr);
+//             }
+//             lastBMoveDecrease = true;
+//         }
 
-        let tempLHullPtr = (lHullPtr + 1) % lHullPtr.length;
-        let newYijA = calculatePointOnLineThroughPts(leftHull[tempLHullPtr], rightHull[tempRHullPtr]);
-        if (newYijA < currentYij) {
-            lHullPtr = tempLHullPtr;
-            currentYij = newYijA;
-            lastAMoveDecrease = false;
-            if (lHullPtrDump.includes(tempLHullPtr)) {
-                removeFromArray(tempLHullPtr, lHullPtrDump);
-            }
-        } else {
-            lastAMoveDecrease = true;
-            if (!lHullPtrDump.includes(tempLHullPtr)) {
-                lHullPtrDump.push(tempLHullPtr);
-            }
-        }
-    }
+//         let tempLHullPtr = (lHullPtr + 1) % lHullPtr.length;
+//         let newYijA = calculatePointOnLineThroughPts(leftHull[tempLHullPtr], rightHull[tempRHullPtr]);
+//         if (newYijA < currentYij) {
+//             lHullPtr = tempLHullPtr;
+//             currentYij = newYijA;
+//             lastAMoveDecrease = false;
+//             if (lHullPtrDump.includes(tempLHullPtr)) {
+//                 removeFromArray(tempLHullPtr, lHullPtrDump);
+//             }
+//         } else {
+//             lastAMoveDecrease = true;
+//             if (!lHullPtrDump.includes(tempLHullPtr)) {
+//                 lHullPtrDump.push(tempLHullPtr);
+//             }
+//         }
+//     }
 
-    return [lHullPtrDump, rHullPtrDump];
-}
+//     return [lHullPtrDump, rHullPtrDump];
+// }
 
 function combineHulls(hull1, hull2) {
-    let xAvg = getAverageXCoord([...hull1, ...hull2]);
+    // let xAvg = getAverageXCoord([...hull1, ...hull2]);
 
-    let lHull = getLeftHull(hull1, hull2);
-    let rHull = getRightHull(hull1, hull2);
+    // let lHull = getLeftHull(hull1, hull2);
+    // let rHull = getRightHull(hull1, hull2);
 
-    let upperTangentOutput = getUpperTangent(lHull, rHull, xAvg);
-    let lowerTangentOutput = getLowerTangent(lHull, rHull, xAvg);
+    // let upperTangentOutput = getUpperTangent(lHull, rHull, xAvg);
+    // let lowerTangentOutput = getLowerTangent(lHull, rHull, xAvg);
 
-    let lHullPointDump = [...upperTangentOutput[0], ...lowerTangentOutput[0]];
-    let rHullPointDump = [...upperTangentOutput[1], ...lowerTangentOutput[1]];
+    // let lHullPointDump = [...upperTangentOutput[0], ...lowerTangentOutput[0]];
+    // let rHullPointDump = [...upperTangentOutput[1], ...lowerTangentOutput[1]];
 
-    lHullPointDump.forEach((i) => {
-        lHull.splice(i, 1);
-    });
+    // lHullPointDump.forEach((i) => {
+    //     lHull.splice(i, 1);
+    // });
 
-    rHullPointDump.forEach((i) => {
-        rHull.splice(i, 1);
-    });
+    // rHullPointDump.forEach((i) => {
+    //     rHull.splice(i, 1);
+    // });
 
     return [...hull1, ...hull2];
 }
