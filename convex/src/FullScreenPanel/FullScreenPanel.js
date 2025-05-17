@@ -1,6 +1,6 @@
 import './FullScreenPanel.css';
-import SidePanel from './SidePanel';
-import Canvas from './Canvas';
+import SidePanel from './SidePanel.js';
+import Canvas from './Canvas.js';
 
 function FullScreenPanel() {
     return (

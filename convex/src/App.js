@@ -1,5 +1,5 @@
 import './App.css';
-import FullScreenPanel from './FullScreenPanel/FullScreenPanel';
+import FullScreenPanel from './FullScreenPanel/FullScreenPanel.js';
 import { useEffect } from 'react';
 
 function App() {

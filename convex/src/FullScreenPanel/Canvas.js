@@ -1,5 +1,5 @@
 import "./FullScreenPanel.css";
-import divideConquerConvexHull from "../Algorithms/convexHullAlgorithms.js";
+import { sum, grahamScan, jarvisMarch } from "../Algorithms/convexHullAlgorithms.js";
 import { useState, useRef, useEffect } from "react";
 import * as d3 from "d3";
 
@@ -22,7 +22,7 @@ function Canvas() {
   }
 
   function updateHullPoints(newPoints) {
-    let newHull = divideConquerConvexHull(newPoints);
+    let newHull = newPoints; //divideConquerConvexHull(newPoints);
     setHullPoints(newHull);
 
     console.log(newHull);
