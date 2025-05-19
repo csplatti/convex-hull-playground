@@ -22,7 +22,7 @@ function Canvas() {
   }
 
   function updateHullPoints(newPoints) {
-    let newHull = newPoints; //divideConquerConvexHull(newPoints);
+    let newHull = grahamScan([...newPoints]); //divideConquerConvexHull(newPoints);
     setHullPoints(newHull);
 
     console.log(newHull);

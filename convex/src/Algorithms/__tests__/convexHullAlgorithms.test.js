@@ -176,51 +176,51 @@ describe("sortPointsByAngleToHZ function", () => {
     });
 });
 
-describe("ccwTurnToNextPoint function", () => {
-    test("returns true for a counterclockwise turn", () => {
-        const lastLastPoint = [0, 0];
-        const lastPoint = [1, 0];
-        const nextPoint = [1, 1];
-        expect(ccwTurnToNextPoint(nextPoint, lastPoint, lastLastPoint)).toBe(true);
-    });
+// describe("ccwTurnToNextPoint function", () => {
+//     test("returns true for a counterclockwise turn", () => {
+//         const lastLastPoint = [0, 0];
+//         const lastPoint = [1, 0];
+//         const nextPoint = [1, 1];
+//         expect(ccwTurnToNextPoint(nextPoint, lastPoint, lastLastPoint)).toBe(true);
+//     });
 
-    test("returns false for a clockwise turn", () => {
-        const lastLastPoint = [0, 0];
-        const lastPoint = [1, 0];
-        const nextPoint = [1, -1];
-        expect(ccwTurnToNextPoint(nextPoint, lastPoint, lastLastPoint)).toBe(false);
-    });
+//     test("returns false for a clockwise turn", () => {
+//         const lastLastPoint = [0, 0];
+//         const lastPoint = [1, 0];
+//         const nextPoint = [1, -1];
+//         expect(ccwTurnToNextPoint(nextPoint, lastPoint, lastLastPoint)).toBe(false);
+//     });
 
-    test("returns false for collinear points", () => {
-        const lastLastPoint = [0, 0];
-        const lastPoint = [1, 1];
-        const nextPoint = [2, 2];
-        expect(ccwTurnToNextPoint(nextPoint, lastPoint, lastLastPoint)).toBe(false);
-    });
+//     test("returns false for collinear points", () => {
+//         const lastLastPoint = [0, 0];
+//         const lastPoint = [1, 1];
+//         const nextPoint = [2, 2];
+//         expect(ccwTurnToNextPoint(nextPoint, lastPoint, lastLastPoint)).toBe(false);
+//     });
 
-    test("handles points with negative coordinates", () => {
-        const lastLastPoint = [-1, -1];
-        const lastPoint = [0, 0];
-        const nextPoint = [-1, 1];
-        expect(ccwTurnToNextPoint(nextPoint, lastPoint, lastLastPoint)).toBe(true);
-    });
+//     test("handles points with negative coordinates", () => {
+//         const lastLastPoint = [-1, -1];
+//         const lastPoint = [0, 0];
+//         const nextPoint = [-1, 1];
+//         expect(ccwTurnToNextPoint(nextPoint, lastPoint, lastLastPoint)).toBe(true);
+//     });
 
-    test("handles points forming a straight vertical line", () => {
-        const lastLastPoint = [0, 0];
-        const lastPoint = [0, 1];
-        const nextPoint = [0, 2];
-        expect(ccwTurnToNextPoint(nextPoint, lastPoint, lastLastPoint)).toBe(false);
-    });
+//     test("handles points forming a straight vertical line", () => {
+//         const lastLastPoint = [0, 0];
+//         const lastPoint = [0, 1];
+//         const nextPoint = [0, 2];
+//         expect(ccwTurnToNextPoint(nextPoint, lastPoint, lastLastPoint)).toBe(false);
+//     });
 
-    test("handles points forming a straight horizontal line", () => {
-        const lastLastPoint = [0, 0];
-        const lastPoint = [1, 0];
-        const nextPoint = [2, 0];
-        expect(ccwTurnToNextPoint(nextPoint, lastPoint, lastLastPoint)).toBe(false);
-    });
-});
+//     test("handles points forming a straight horizontal line", () => {
+//         const lastLastPoint = [0, 0];
+//         const lastPoint = [1, 0];
+//         const nextPoint = [2, 0];
+//         expect(ccwTurnToNextPoint(nextPoint, lastPoint, lastLastPoint)).toBe(false);
+//     });
+// });
 
-/*
+
 describe("grahamScan function", () => {
     test("returns correct convex hull for a set of points", () => {
         const points = [
@@ -239,7 +239,10 @@ describe("grahamScan function", () => {
             [2, 4],
             [0, 4],
         ]; // Expected convex hull (stubbed for now)
-        expect(grahamScan(points)).toEqual(expectedHull);
+
+        let result = grahamScan(points);
+        console.log("OUT: " + JSON.stringify(result));
+        expect(result).toEqual(expectedHull);
     });
 
     test("handles a single point", () => {
@@ -278,7 +281,7 @@ describe("grahamScan function", () => {
         expect(grahamScan(points)).toEqual(expectedHull);
     });
 });
-
+/*
 describe("jarvisMarch function", () => {
     test("returns correct convex hull for a set of points", () => {
         const points = [

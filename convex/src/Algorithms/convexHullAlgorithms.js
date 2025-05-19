@@ -48,34 +48,64 @@ function crossProduct(v, w) {
 
 // EFFECTS: returns true if the turn to the next point is ccw, false otherwise
 function ccwTurnToNextPoint(nextPoint, lastPt, lastLastPt) {
-    // TODO: MAKE SURE THIS WORKS
     let vectorToNextPt = [(lastPt[0] - nextPoint[0]), (lastPt[1]-nextPoint[1])]; // v
     let vectorBetweenLastTwoPts = [(lastLastPt[0]-lastPt[0]), (lastLastPt[1]-lastPt[1])]; // w
-    return crossProduct(vectorToNextPt, vectorBetweenLastTwoPts) < 0;
+    return crossProduct(vectorToNextPt, vectorBetweenLastTwoPts); // <= 0;
 }
 
 // MODIFIES: points
 // EFFECTS: returns the convex hull of the provided set of points
 function grahamScan(points) {
+    if (points.length <= 3) {
+        return points;
+    }
+
     moveLowestYPtToStart(points);
 
-    let p = points.splice(0, 1);
+    let p = points.splice(0, 1)[0]; 
 
     sortPointsByAngleToHZ(points, p);
 
-    let stack = []; // JS array can be used as a stack via push and pop methods
+    let stack = [p, points[0]]; // JS array can be used as a stack via push and pop methods
 
-    for (let i = 0; i < points.length; i++) {
-        if (ccwTurnToNextPoint(nextPoint, lastPt, lastLastPt)) {
+    let lastPt;
+    let lastLastPt;
 
+    for (let i = 1; i < points.length; i++) {
+        lastPt = stack[stack.length - 1];
+        lastLastPt = stack[stack.length - 2];
+        let nextPoint = points[i];
+        let ccwTurnResult = ccwTurnToNextPoint(nextPoint, lastPt, lastLastPt)
+        if (ccwTurnResult < 0) {
+            stack.push(nextPoint)
+            lastPt = stack[stack.length - 1];
+            lastLastPt = stack[stack.length - 2];
+        } else if (ccwTurnResult === 0) {
+            stack.pop();
+            stack.push(nextPoint);
         } else {
-
+            while (true) {
+                stack.pop();
+                lastPt = stack[stack.length - 1];
+                lastLastPt = stack[stack.length - 2];
+                ccwTurnResult = ccwTurnToNextPoint(nextPoint, lastPt, lastLastPt)
+                if (ccwTurnResult < 0) {
+                    stack.push(nextPoint);
+                    break;
+                }
+                // } else if (ccwTurnResult === 0) {
+                //     if (between(lastLastPt, lastPt, nextPoint)) {
+                //         stack.pop();
+                //         // stack.push(nextPoint);
+                //     } else {
+                //         break;
+                //     }
+                // }
+            }
         }
     }
 
-
-
-    return points; // TODO: stub
+    return stack;
 }
 
 // MODIFIES: points
